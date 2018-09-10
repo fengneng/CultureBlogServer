@@ -8,4 +8,12 @@ public class Data {
     public Data(ArrayList items) {
         this.items = items;
     }
+
+    public ArrayList getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList items) {
+        this.items = items;
+    }
 }

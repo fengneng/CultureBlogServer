@@ -5,6 +5,15 @@ public class Response {
     private String message;
     private Data data;
 
+    public Response() {
+    }
+
+    public Response(int code, String message, Data data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
     public int getCode() {
         return code;
     }
