@@ -17,14 +17,14 @@ import java.util.ArrayList;
 public class ApiController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String index (@RequestParam int code) {
+    public String index (int code) {
         Response response = new Response(code, "", new Data(null));
 
         return JSON.toJSONString(response);
     }
 
     @RequestMapping(value = "/hot_rcmd", method = RequestMethod.GET)
-    public String hot (@RequestParam Integer idx) {
+    public String hot (Integer idx) {
         Response response = new Response();
         response.setCode(0);
         response.setMessage("");
@@ -51,50 +51,50 @@ public class ApiController {
         return JSON.toJSONString(text);
     }
 
-    @RequestMapping(value = "/channel_deatil", method = RequestMethod.GET)
-    public String channel_deatil (@RequestParam Integer idx) {
-        String text = Util.readFile("classpath:dataFile/channel_deatil.json");
+    @RequestMapping(value = "/channel_detail", method = RequestMethod.GET)
+    public String channel_detail (Integer idx) {
+        String text = Util.readFile("classpath:dataFile/channel_detail.json");
         return JSON.toJSONString(text);
     }
 
-    @RequestMapping(value = "/home/topic_detail", method = RequestMethod.GET)
-    public String topic_detail (@RequestParam Integer idx) {
+    @RequestMapping(value = "/topic_detail", method = RequestMethod.GET)
+    public String topic_detail (Integer idx) {
         String text = Util.readFile("classpath:dataFile/topic_detail.json");
         return JSON.toJSONString(text);
     }
 
-    @RequestMapping(value = "/home/article_detail", method = RequestMethod.GET)
-    public String article_detail (@RequestParam Integer idx) {
+    @RequestMapping(value = "/article_detail", method = RequestMethod.GET)
+    public String article_detail ( Integer idx) {
         String text = Util.readFile("classpath:dataFile/article_detail.json");
         return JSON.toJSONString(text);
     }
 
     @RequestMapping(value = "/attention", method = RequestMethod.GET)
-    public String attention (@RequestParam Integer uid, @RequestParam Integer idx) {
+    public String attention (Integer uid, Integer idx) {
         String text = Util.readFile("classpath:dataFile/attention.json");
         return JSON.toJSONString(text);
     }
 
     @RequestMapping(value = "/follows", method = RequestMethod.GET)
-    public String notice (@RequestParam Integer uid) {
+    public String notice (Integer uid) {
         String text = Util.readFile("classpath:dataFile/follows.json");
         return JSON.toJSONString(text);
     }
 
     @RequestMapping(value = "/photo_flow", method = RequestMethod.GET)
-    public String photo_flow (@RequestParam Integer idx) {
+    public String photo_flow (Integer idx) {
         String text = Util.readFile("classpath:dataFile/photo_flow.json");
         return JSON.toJSONString(text);
     }
 
     @RequestMapping(value = "/message", method = RequestMethod.GET)
-    public String message (@RequestParam Integer uid, @RequestParam Integer idx) {
+    public String message ( Integer uid, Integer idx) {
         String text = Util.readFile("classpath:dataFile/message.json");
         return JSON.toJSONString(text);
     }
 
     @RequestMapping(value = "/user_profile", method = RequestMethod.GET)
-    public String user_profile (@RequestParam Integer uid) {
+    public String user_profile (Integer uid) {
         String text = Util.readFile("classpath:dataFile/user_profile.json");
         return JSON.toJSONString(text);
     }
