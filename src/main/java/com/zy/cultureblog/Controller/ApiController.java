@@ -39,63 +39,64 @@ public class ApiController {
 
         String string = JSON.toJSONString(response);
 
-        String text = Util.readFile("classpath:dataFile/hottopic.json");
+        String text = Util.readFile("classpath:dataFile/hot_rcmd.json");
 
 
         return text;
     }
 
-    @RequestMapping("/channel")
+    @RequestMapping(value = { "/channel" }, method = { RequestMethod.GET }, produces="application/json;charset=UTF-8")
+    @ResponseBody
     public String channel () {
         String text = Util.readFile("classpath:dataFile/channel.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/channel_detail", method = RequestMethod.GET)
     public String channel_detail (Integer idx) {
         String text = Util.readFile("classpath:dataFile/channel_detail.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/topic_detail", method = RequestMethod.GET)
     public String topic_detail (Integer idx) {
         String text = Util.readFile("classpath:dataFile/topic_detail.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/article_detail", method = RequestMethod.GET)
     public String article_detail ( Integer idx) {
         String text = Util.readFile("classpath:dataFile/article_detail.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/attention", method = RequestMethod.GET)
     public String attention (Integer uid, Integer idx) {
         String text = Util.readFile("classpath:dataFile/attention.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/follows", method = RequestMethod.GET)
     public String notice (Integer uid) {
         String text = Util.readFile("classpath:dataFile/follows.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/photo_flow", method = RequestMethod.GET)
     public String photo_flow (Integer idx) {
         String text = Util.readFile("classpath:dataFile/photo_flow.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/message", method = RequestMethod.GET)
     public String message ( Integer uid, Integer idx) {
         String text = Util.readFile("classpath:dataFile/message.json");
-        return JSON.toJSONString(text);
+        return text;
     }
 
     @RequestMapping(value = "/user_profile", method = RequestMethod.GET)
     public String user_profile (Integer uid) {
         String text = Util.readFile("classpath:dataFile/user_profile.json");
-        return JSON.toJSONString(text);
+        return text;
     }
  }
