@@ -8,16 +8,16 @@ public class PageController {
 
     @RequestMapping("/")
     public String index () {
-        return "redirect:index.html";
+        return "index.html";
     }
 
     @RequestMapping("/index")
     public String index2 () {
-        return "redirect:index.html";
+        return "redirect:/";
     }
 //
     @RequestMapping("/index.html")
     public String index3 () {
-        return "index.html";
+        return "redirect:/";
     }
 }

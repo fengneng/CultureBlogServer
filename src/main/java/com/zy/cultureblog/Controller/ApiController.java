@@ -8,21 +8,23 @@ import com.zy.cultureblog.Entry.Challenge;
 import com.zy.cultureblog.Entry.Data;
 import com.zy.cultureblog.Entry.Response;
 import com.zy.cultureblog.Utils.Util;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping("/api/v1")
 public class ApiController {
 
-    @RequestMapping("/api")
-    public String index () {
-        return "api v1";
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String index (@RequestParam int code) {
+        Response response = new Response(code, "", new Data(null));
+
+        return JSON.toJSONString(response);
     }
 
-    @RequestMapping("home/hotrec")
-    public String hot () {
+    @RequestMapping(value = "/hot_rcmd", method = RequestMethod.GET)
+    public String hot (@RequestParam Integer idx) {
         Response response = new Response();
         response.setCode(0);
         response.setMessage("");
@@ -43,53 +45,57 @@ public class ApiController {
         return text;
     }
 
-    @RequestMapping("/home/attention")
-    public String attention () {
-
-        String text = Util.readFile("classpath:dataFile/attention.json");
-        JSONObject jsonObject = JSON.parseObject(text);
-
-        int code = jsonObject.getIntValue("code");
-        String message = jsonObject.getString("message");
-        JSONArray items = jsonObject.getJSONObject("data").getJSONArray("items");
-
-        ArrayList arrayList = new ArrayList();
-        for (Object item : items) {
-            arrayList.add(item);
-        }
-        Data data = new Data(arrayList);
-
-        Response response = new Response(code, message, data);
-
-        return JSON.toJSONString(response);
-    }
-
-    @RequestMapping("/home/channel")
+    @RequestMapping("/channel")
     public String channel () {
         String text = Util.readFile("classpath:dataFile/channel.json");
         return JSON.toJSONString(text);
     }
 
-    @RequestMapping("/home/notice")
-    public String notice () {
-        String text = Util.readFile("classpath:dataFile/notice.json");
+    @RequestMapping(value = "/channel_deatil", method = RequestMethod.GET)
+    public String channel_deatil (@RequestParam Integer idx) {
+        String text = Util.readFile("classpath:dataFile/channel_deatil.json");
         return JSON.toJSONString(text);
     }
 
-    @RequestMapping("/home/post_list")
-    public String post_list () {
-        String text = Util.readFile("classpath:dataFile/post_list.json");
+    @RequestMapping(value = "/home/topic_detail", method = RequestMethod.GET)
+    public String topic_detail (@RequestParam Integer idx) {
+        String text = Util.readFile("classpath:dataFile/topic_detail.json");
         return JSON.toJSONString(text);
     }
 
-    @RequestMapping("/home/discussion_detail")
-    public String discussion_detail () {
-        String text = Util.readFile("classpath:dataFile/discussion_detail_00932.json");
-        return JSON.toJSONString(text);
-    }
-    @RequestMapping("/home/article_detail")
-    public String article_detail () {
+    @RequestMapping(value = "/home/article_detail", method = RequestMethod.GET)
+    public String article_detail (@RequestParam Integer idx) {
         String text = Util.readFile("classpath:dataFile/article_detail.json");
+        return JSON.toJSONString(text);
+    }
+
+    @RequestMapping(value = "/attention", method = RequestMethod.GET)
+    public String attention (@RequestParam Integer uid, @RequestParam Integer idx) {
+        String text = Util.readFile("classpath:dataFile/attention.json");
+        return JSON.toJSONString(text);
+    }
+
+    @RequestMapping(value = "/follows", method = RequestMethod.GET)
+    public String notice (@RequestParam Integer uid) {
+        String text = Util.readFile("classpath:dataFile/follows.json");
+        return JSON.toJSONString(text);
+    }
+
+    @RequestMapping(value = "/photo_flow", method = RequestMethod.GET)
+    public String photo_flow (@RequestParam Integer idx) {
+        String text = Util.readFile("classpath:dataFile/photo_flow.json");
+        return JSON.toJSONString(text);
+    }
+
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
+    public String message (@RequestParam Integer uid, @RequestParam Integer idx) {
+        String text = Util.readFile("classpath:dataFile/message.json");
+        return JSON.toJSONString(text);
+    }
+
+    @RequestMapping(value = "/user_profile", method = RequestMethod.GET)
+    public String user_profile (@RequestParam Integer uid) {
+        String text = Util.readFile("classpath:dataFile/user_profile.json");
         return JSON.toJSONString(text);
     }
  }
