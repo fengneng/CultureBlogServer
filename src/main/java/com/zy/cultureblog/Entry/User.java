@@ -13,6 +13,17 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User {
 
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column(name = "name", nullable = true, length = 20)
+    private String name;
+
+    @Column(name = "avatar", nullable = true, length = 400)
+    private int avatar;
+
+
     public Long getId() {
         return id;
     }
@@ -29,21 +40,5 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column(name = "name", nullable = true, length = 20)
-    private String name;
-
-    @Column(name = "age", nullable = true, length = 4)
-    private int age;
 }
